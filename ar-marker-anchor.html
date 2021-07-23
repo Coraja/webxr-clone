@@ -80,6 +80,10 @@ CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
         let skybox = new SkyboxNode({ url: 'media/textures/milky-way-4k.png' });
         scene.addNode(skybox);
 
+        const img = document.getElementById('img');
+        // Ensure the image is loaded and ready for use
+        const imgBitmap = await createImageBitmap(img);
+
         function initXR()
         {
             xrButton = new WebXRButton({
@@ -111,6 +115,8 @@ CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
             // fullscreen on a mobile device.
             return navigator.xr.requestSession('immersive-ar')
                 .then((session) => {
+                    requiredFeatures: ['image-tracking'];
+                    trackedImages: [{image: imgBitmap,widthInMeters: 0.2}];
                     xrButton.setSession(session);
                     session.isImmersive = true;
                     onSessionStarted(session);
