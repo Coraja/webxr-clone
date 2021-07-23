@@ -113,8 +113,6 @@ CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
             // fullscreen on a mobile device.
             return navigator.xr.requestSession('immersive-ar')
                 .then((session) => {
-                    requiredFeatures: ['image-tracking'];
-                    trackedImages: [{ image: imgBitmap, widthInMeters: 0.2 }];
                     xrButton.setSession(session);
                     session.isImmersive = true;
                     onSessionStarted(session);
