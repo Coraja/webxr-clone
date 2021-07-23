@@ -148,7 +148,7 @@ CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
                 skybox.visible = false;
             }
 
-            let scores = await session.getTrackedImageScores();
+            let scores = session.getTrackedImageScores();
             let trackableImages = 0;
             for (let index = 0; index < scores.length; ++index)
             {
